@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/styles.css">
+    <title>InGenios</title>
+</head>
+
+<body>
+
+    <header class="navbar navbar-expand-md fixed-top navbar-dark border-bottom navbar-fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="./img/bootstrap-logo.svg" alt="Logo" width="30" class="d-inline-block align-text-bottom">
+                InGenios
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <nav class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled">Disabled</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+    <main>
+
+        <section class="container portada">
+
+            <div class="row align-items-center mt-md-5 p-3">
+
+                <div class="col-12 col-md-6 order-md-last">
+                    <img src="./img/butterfly.jpg" class="img-fluid" alt="portada">
+                </div>
+
+                <div class="col-12 col-md-6 d-flex flex-column gap-3">
+                    <h1 class="text-center text-md-start fw-bold display-5">{{ question.question_text }}</h1>
+                    <div>
+                        <form action="{% url 'polls:vote' question.id %}" method="post">
+                            {% csrf_token %}
+                            <fieldset>
+                                <legend>
+                                    <h1>{{ question.question_text }}</h1>
+                                </legend>
+                                {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+                                {% for choice in question.choice_set.all %}
+                                <input type="radio" name="choice" id="choice{{ forloop.counter }}"
+                                    value="{{ choice.id }}">
+                                <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+                                {% endfor %}
+                            </fieldset>
+                            <input type="submit" value="Vote">
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container bg-dark text-bg-dark">
+            <div class="row justify-content-md-between align-items-md-center border-bottom">
+                <div class="d-flex flex-column align-items-center mt-3 p-3 col-md-4">
+                    <img src="./img/bootstrap-logo.svg" alt="logo" class="w-25">
+                    <span class="text-center p-2">InGenios (c) 2023, todos los derechos reservados</span>
+                    <span>ingenios@gmail.com</span>
+                </div>
+
+                <div class="mt-3 p-3 col-md-4">
+                    <h3 class="text-center">Nuestras Redes</h3>
+                    <div class="d-flex justify-content-around fs-2">
+                        <i class="bi bi-instagram"></i>
+                        <i class="bi bi-facebook"></i>
+                        <i class="bi bi-linkedin"></i>
+                        <i class="bi bi-twitter"></i>
+                    </div>
+
+
+                </div>
+
+                <div class="mt-3 p-3 col-md-4">
+                    <h3 class="text-center text-md-start">Suscribite a nuestro Newsletter</h3>
+                    <form action="" class="row">
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control text-bg-dark" id="newsletter"
+                                placeholder="name@example.com">
+                            <label for="newsletter">Email address</label>
+                        </div>
+
+                        <div class="d-flex justify-content-center mb-3 justify-content-md-start">
+                            <input type="submit" class="btn btn-light btn-lg" value="Suscribir">
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center p-3">
+                <span>InGenios | Todos los derechos reservados</span>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
