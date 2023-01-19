@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-u!_@o5b7y)&hduqnuasc04-=6*ke77ez%&w%#1ykz67uk2ydiy
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mpoli2000.pythonanywhere.com', '127.0.0.1']
 
 
 # Application definition
@@ -118,9 +118,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-]
+STATIC_ROOT = "/home/mpoli2000/biusite/static"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

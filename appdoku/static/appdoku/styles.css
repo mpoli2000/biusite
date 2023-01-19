@@ -1,0 +1,12 @@
+.bg-azul {
+    background-color: cadetblue;
+}
+
+.bg-papaya {
+    background-color: papayawhip;
+}
+
+header{
+    background-color: rgba(52, 59, 64, 0.9);
+    color: red;
+}
