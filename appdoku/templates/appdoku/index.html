@@ -17,8 +17,8 @@
 <body>
     <header class="navbar navbar-expand-md fixed-top navbar-dark border-bottom navbar-fixed-top">
         <div class="container">
-            <div class="d-flex justify-content-around fs-2 fw-bold">
-                <i class="bi bi-nut-fill"></i>
+            <div class="d-flex justify-content-around align-items-center fs-2 fw-bold">
+                <i class="bi bi-nut-fill text-white"></i>
                 <a class="navbar-brand ms-1" href="#">
                     <!-- <img src="{% static 'polls/img/bootstrap-logo.svg' %}" alt="Logo" width="30"
                         class="d-inline-block align-text-bottom"> -->
@@ -51,7 +51,7 @@
 
 
     <main>
-
+        {% block contenido %}
         <section class="container portada">
 
             <div class="row align-items-center mt-5 p-3">
@@ -68,13 +68,13 @@
                         automaticamente se genere la solución Mucha suerte !</p>
 
                     <div class="d-flex justify-content-center justify-content-md-start">
-                        <a href="" class="btn btn-dark btn-lg">Generar</a>
+                        <a href="{% url 'appdoku:generar' %}" class="btn btn-dark btn-lg">Generar</a>
                     </div>
                 </div>
         </section>
 
         <section class="container tarjeta">
-            <div class="row justify-content-start align-items-center">
+            <div class="row justify-content-start align-items-center p-3">
                 {% if latest_tablero_list %}
                 {% for tablero in latest_tablero_list %}
 
@@ -96,8 +96,6 @@
 
             </div>
         </section>
-
-
 
         <section class="formulario-contacto container shadow mt-3 p-3">
 
@@ -131,14 +129,15 @@
                 </div>
             </div>
         </section>
-
+        {% endblock %}
     </main>
 
     <footer>
         <div class="container bg-dark text-bg-dark">
             <div class="row justify-content-md-between align-items-md-center border-bottom">
                 <div class="d-flex flex-column align-items-center mt-3 p-3 col-md-4">
-                    <img src="{% static 'polls/img/bootstrap-logo.svg' %}" alt="logo" class="w-25">
+                    <!-- <img src="{% static 'polls/img/bootstrap-logo.svg' %}" alt="logo" class="w-25"> -->
+                    <i class="bi bi-nut-fill fs-1"></i>
                     <span class="text-center p-2">InGenios (c) 2023, todos los derechos reservados</span>
                     <span>ingenios@gmail.com</span>
                 </div>
