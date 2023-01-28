@@ -1,12 +1,28 @@
-.bg-azul {
-    background-color: cadetblue;
-}
-
-.bg-papaya {
-    background-color: papayawhip;
-}
-
 header{
     background-color: rgba(52, 59, 64, 0.9);
     color: red;
+}
+
+.grilla{
+    display: grid;
+    /* padding: 4px; */
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(3,1fr);
+    /* border: black solid 1px; */
+}
+.sub-grilla{
+    /* border: red solid 1px; */
+    text-align: center;
+    font-size: 0.75rem;
+}
+
+.celda{
+    border: black solid 1px;
+    padding: 7px;
+}
+
+.celda-fija{
+    background-color: gray;
+    color: white;
+    font-weight: bold;
 }

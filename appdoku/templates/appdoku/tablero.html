@@ -1,0 +1,67 @@
+{% extends "appdoku/index.html" %}
+{% load static %}
+{% block contenido %}
+
+<section class=" container mt-5 p-3">
+    <div class="row">
+        <div class="col-12 col-md-6 order-md-last">
+            <h2 class="text-center text-md-start display-5 fw-bold">{{ tablero.name }}#{{ tablero.id }}</h2>
+            <p class="text-center text-md-start">creado: {{ tablero.created }}</p>
+            <p class="text-center text-md-start">nivel: {{ tablero.level }} - tamaño: {{ tablero.size }}</p>
+        </div>
+
+        <div class="col-12 col-md-6">
+            <form action="" method="post" class="row justify-content-center align-items-center">
+                {% csrf_token %}
+                <div class="grilla gap-1">
+                    {% for fila in sudoku_cluster %}
+                    <div class="grilla">
+                        {% for id,value in fila %}
+                        {% if value == '0' %}
+                        <div class="col border border-dark">
+                            <input type="text" class="form-control-plaintext text-center" id="{{ id }}" name="00" value="">
+                        </div>
+                        {% else %}
+                        <div class="col border border-dark">
+                            <input type="text" class="form-control-plaintext text-center bg-primary text-bg-dark"
+                                id="{{ id }}" name="00" value="{{ value }}" readonly>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- <section class="container mt-3 p-3">
+    <div class="row">
+        <table style="width: 500px; height: 500px; padding: 20px">
+            {% for fila in sudoku_lst %}
+            <tr>
+                {% for elemento in fila %}
+
+                {% if elemento == '0' %}
+                <td style="border: 1px solid black; text-align: center;">
+                    <a href="">-</a>
+                </td>
+                {% else %}
+                <td style="border: 1px solid black; text-align: center; background-color: gainsboro; font-size: large;">
+                    {{ elemento }}
+                </td>
+                {% endif %}
+
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</section>
+
+<p>Progreso: ---, Movimientos: ---</p>
+<a href="{% url 'appdoku:index' %}">+ Volver</a>
+<p>Gracias por jugar a appDoku</p> -->
+
+{% endblock %}
