@@ -1,6 +1,5 @@
 header{
     background-color: rgba(52, 59, 64, 0.9);
-    color: red;
 }
 
 .grilla{
@@ -10,19 +9,12 @@ header{
     grid-template-rows: repeat(3,1fr);
     /* border: black solid 1px; */
 }
-.sub-grilla{
-    /* border: red solid 1px; */
-    text-align: center;
-    font-size: 0.75rem;
+
+.celda:hover{
+    background-color: lightgray;
 }
 
-.celda{
-    border: black solid 1px;
-    padding: 7px;
-}
-
-.celda-fija{
-    background-color: gray;
-    color: white;
+input:focus{
+    background-color: lightgoldenrodyellow;
     font-weight: bold;
 }
