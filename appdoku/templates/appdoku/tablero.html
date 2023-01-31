@@ -3,33 +3,46 @@
 {% block contenido %}
 
 <section class=" container mt-5 p-3">
-    <div class="row">
-        <div class="col-12 col-md-6 order-md-last">
+    <div class="row mt-md-3">
+        <div class="col-12 col-md-5 order-md-last">
             <h2 class="text-center text-md-start display-5 fw-bold">{{ tablero.name }}#{{ tablero.id }}</h2>
             <p class="text-center text-md-start">creado: {{ tablero.created }}</p>
             <p class="text-center text-md-start">nivel: {{ tablero.level }} - tamaño: {{ tablero.size }}</p>
         </div>
 
-        <div class="col-12 col-md-6">
-            <form action="" method="post" class="row justify-content-center align-items-center">
+        <div class="col-12 col-md-7">
+            <form enctype="multipart/form-data" action="/appdoku/tablero/{{ tablero.id }}" method="post" class="row justify-content-center align-items-center" novalidate>
                 {% csrf_token %}
-                <div class="grilla gap-1">
+                <div class="grilla gap-2">
                     {% for fila in sudoku_cluster %}
                     <div class="grilla">
-                        {% for id,value in fila %}
-                        {% if value == '0' %}
-                        <div class="col border border-dark">
-                            <input type="text" class="form-control-plaintext text-center" id="{{ id }}" name="00" value="">
+                        {% for id, id_str, box, value, flag in fila %}
+                        {% if flag == 'N' %}
+                        <div class="border border-dark celda">
+                            <input type="text" class="form-control-plaintext text-center" id="{{ id_str }}" name="{{ id_str }}" value="">
                         </div>
-                        {% else %}
-                        <div class="col border border-dark">
-                            <input type="text" class="form-control-plaintext text-center bg-primary text-bg-dark"
-                                id="{{ id }}" name="00" value="{{ value }}" readonly>
+                        {% elif flag == 'P' %}
+                        <div class="border border-dark">
+                            <input type="text" class="form-control-plaintext text-center bg-primary text-bg-primary"
+                                id="{{ id_str }}" name="{{ id_str }}" value="{{ value }}" readonly>
+                        </div>
+                        {% elif flag == 'S' %}
+                        <div class="border border-dark">
+                            <input type="text" class="form-control-plaintext text-center bg-success text-bg-success"
+                                id="{{ id_str }}" name="{{ id_str }}" value="{{ value }}" readonly>
+                        </div>
+                        {% elif flag == 'D' %}
+                        <div class="border border-dark celda">
+                            <input type="text" class="form-control-plaintext text-center bg-danger text-bg-danger"
+                                id="{{ id_str }}" name="{{ id_str }}" value="{{ value }}">
                         </div>
                         {% endif %}
                         {% endfor %}
                     </div>
                     {% endfor %}
+                </div>
+                <div class="col d-flex justify-content-end align-items-center mt-2">
+                    <input type="submit" class="btn btn-dark btn-lg" value="Evaluar">
                 </div>
             </form>
         </div>

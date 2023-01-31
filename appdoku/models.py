@@ -9,7 +9,6 @@ class Tablero(models.Model):
     )
 
     SIZE_CHOICES =(
-        ('2', '2x2'),
         ('3', '3x3'),
     )
 
@@ -18,6 +17,7 @@ class Tablero(models.Model):
     size = models.CharField(max_length=1, default='3', choices=SIZE_CHOICES)
     initial_sudoku = models.CharField(max_length=81, default='0')
     final_sudoku = models.CharField(max_length=81, default='0')
+    user_sudoku = models.CharField(max_length=81, default='0')
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

@@ -1,2 +1,7 @@
 appdoku/__pycache__/urls.cpython-39.pyc
 appdoku/__pycache__/views.cpython-39.pyc
+appdoku/__pycache__/forms.cpython-39.pyc
+appdoku/__pycache__/models.cpython-39.pyc
+appdoku/__pycache__/urls.cpython-39.pyc
+appdoku/__pycache__/views.cpython-39.pyc
+appdoku/migrations/__pycache__/0007_tablero_user_sudoku_alter_tablero_size.cpython-39.pyc
