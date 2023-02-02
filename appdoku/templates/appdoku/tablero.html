@@ -3,37 +3,37 @@
 {% block contenido %}
 
 <section class=" container mt-5 p-3">
-    <div class="row mt-md-3">
+    <div class="row mt-md-3 justify-content-center">
         <div class="col-12 col-md-5 order-md-last">
             <h2 class="text-center text-md-start display-5 fw-bold">{{ tablero.name }}#{{ tablero.id }}</h2>
             <p class="text-center text-md-start">creado: {{ tablero.created }}</p>
             <p class="text-center text-md-start">nivel: {{ tablero.level }} - tamaño: {{ tablero.size }}</p>
         </div>
 
-        <div class="col-12 col-md-7">
+        <div class="col-12 col-md-7 col-lg-5 col-xl-4">
             <form enctype="multipart/form-data" action="/appdoku/tablero/{{ tablero.id }}" method="post" class="row justify-content-center align-items-center" novalidate>
                 {% csrf_token %}
                 <div class="grilla gap-2">
                     {% for fila in sudoku_cluster %}
-                    <div class="grilla">
+                    <div class="grilla celda">
                         {% for id, id_str, box, value, flag in fila %}
                         {% if flag == 'N' %}
-                        <div class="border border-dark celda">
-                            <input type="text" class="form-control-plaintext text-center" id="{{ id_str }}" name="{{ id_str }}" value="">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <input type="text" class="celda celda-none" id="{{ id_str }}" name="{{ id_str }}" value="" autocomplete="off">
                         </div>
                         {% elif flag == 'P' %}
-                        <div class="border border-dark">
-                            <input type="text" class="form-control-plaintext text-center bg-primary text-bg-primary"
+                        <div class="d-flex justify-content-center align-items-center">
+                            <input type="text" class="celda celda-primary"
                                 id="{{ id_str }}" name="{{ id_str }}" value="{{ value }}" readonly>
                         </div>
                         {% elif flag == 'S' %}
-                        <div class="border border-dark">
-                            <input type="text" class="form-control-plaintext text-center bg-success text-bg-success"
+                        <div class="d-flex justify-content-center align-items-center">
+                            <input type="text" class="celda celda-success"
                                 id="{{ id_str }}" name="{{ id_str }}" value="{{ value }}" readonly>
                         </div>
                         {% elif flag == 'D' %}
-                        <div class="border border-dark celda">
-                            <input type="text" class="form-control-plaintext text-center bg-danger text-bg-danger"
+                        <div class="d-flex justify-content-center align-items-center">
+                            <input type="text" class="celda celda-danger"
                                 id="{{ id_str }}" name="{{ id_str }}" value="{{ value }}">
                         </div>
                         {% endif %}
@@ -42,7 +42,7 @@
                     {% endfor %}
                 </div>
                 <div class="col d-flex justify-content-end align-items-center mt-2">
-                    <input type="submit" class="btn btn-dark btn-lg" value="Evaluar">
+                    <input type="submit" class="btn btn-dark" value="Evaluar">
                 </div>
             </form>
         </div>
