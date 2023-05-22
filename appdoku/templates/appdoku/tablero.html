@@ -1,0 +1,80 @@
+{% extends "appdoku/index.html" %}
+{% load static %}
+{% block contenido %}
+
+<section class=" container mt-5 p-3">
+    <div class="row mt-md-3 justify-content-center">
+        <div class="col-12 col-md-5 order-md-last">
+            <h2 class="text-center text-md-start display-5 fw-bold">{{ tablero.name }}#{{ tablero.id }}</h2>
+            <p class="text-center text-md-start">creado: {{ tablero.created }}</p>
+            <p class="text-center text-md-start">nivel: {{ tablero.level }} - tamaño: {{ tablero.size }}</p>
+        </div>
+
+        <div class="col-12 col-md-7 col-lg-5 col-xl-4">
+            <form enctype="multipart/form-data" action="/appdoku/tablero/{{ tablero.id }}" method="post" class="row justify-content-center align-items-center" novalidate>
+                {% csrf_token %}
+                <div class="grilla gap-2">
+                    {% for fila in sudoku_cluster %}
+                    <div class="grilla celda">
+                        {% for id, id_str, box, value, flag in fila %}
+                        {% if flag == 'N' %}
+                        <div class="d-flex justify-content-center align-items-center">
+                            <input type="text" class="celda celda-none" id="{{ id_str }}" name="{{ id_str }}" value="" autocomplete="off">
+                        </div>
+                        {% elif flag == 'P' %}
+                        <div class="d-flex justify-content-center align-items-center">
+                            <input type="text" class="celda celda-primary"
+                                id="{{ id_str }}" name="{{ id_str }}" value="{{ value }}" readonly>
+                        </div>
+                        {% elif flag == 'S' %}
+                        <div class="d-flex justify-content-center align-items-center">
+                            <input type="text" class="celda celda-success"
+                                id="{{ id_str }}" name="{{ id_str }}" value="{{ value }}" readonly>
+                        </div>
+                        {% elif flag == 'D' %}
+                        <div class="d-flex justify-content-center align-items-center">
+                            <input type="text" class="celda celda-danger"
+                                id="{{ id_str }}" name="{{ id_str }}" value="{{ value }}">
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="col d-flex justify-content-end align-items-center mt-2">
+                    <input type="submit" class="btn btn-dark" value="Evaluar">
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- <section class="container mt-3 p-3">
+    <div class="row">
+        <table style="width: 500px; height: 500px; padding: 20px">
+            {% for fila in sudoku_lst %}
+            <tr>
+                {% for elemento in fila %}
+
+                {% if elemento == '0' %}
+                <td style="border: 1px solid black; text-align: center;">
+                    <a href="">-</a>
+                </td>
+                {% else %}
+                <td style="border: 1px solid black; text-align: center; background-color: gainsboro; font-size: large;">
+                    {{ elemento }}
+                </td>
+                {% endif %}
+
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</section>
+
+<p>Progreso: ---, Movimientos: ---</p>
+<a href="{% url 'appdoku:index' %}">+ Volver</a>
+<p>Gracias por jugar a appDoku</p> -->
+
+{% endblock %}

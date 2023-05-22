@@ -1,0 +1,65 @@
+{% extends "anto/index.html" %}
+{% load static %}
+{% block contenido %}
+
+<section class="container portada">
+    <div class="row align-items-center mt-5 p-3">
+
+        <div class="col-12 d-flex flex-column">
+            <h1 class="text-center text-md-start fw-bold display-5 mt-3">Tus clases son diferentes</h1>
+
+            <p class="text-center text-md-start"><strong>AntoTeEntrena</strong> hace que tus clases únicas, desde clases
+                <strong>personalizadas</strong>, reducidas, grupales, on-line, combinadas, flexibles ...</p>
+        </div>
+    </div>
+</section>
+
+<section class="container tarjeta">
+    <div class="row justify-content-evenly align-items-center p-3">
+
+        <div class="card col-12 col-sm-6 col-md-4 col-lg-3">
+            <img src="{% static 'anto/img/sudoku.png' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h3 class="card-title fs-5 fw-bold">Personalizadas</h3>
+                <p class="card-text">Alumnos: 1</p>
+                <p class="card-text">Duración: 45 min</p>
+                <p class="card-text">Lugar: en domicilio</p>
+
+                <div class="d-flex justify-content-center">
+                    <a href="" class="btn btn-dark">Entrenar</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="card col-12 col-sm-6 col-md-4 col-lg-3">
+            <img src="{% static 'anto/img/sudoku.png' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h3 class="card-title fs-5 fw-bold">Reducidas</h3>
+                <p class="card-text">Alumnos: 2-3</p>
+                <p class="card-text">Duración: 60 min</p>
+                <p class="card-text">Lugar: domicilio</p>
+
+                <div class="d-flex justify-content-center">
+                    <a href="" class="btn btn-dark">Entrenar</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="card col-12 col-sm-6 col-md-4 col-lg-3">
+            <img src="{% static 'anto/img/sudoku.png' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h3 class="card-title fs-5 fw-bold">Grupales</h3>
+                <p class="card-text">Alumnos: 5-10</p>
+                <p class="card-text">Duración: 60 min</p>
+                <p class="card-text">Lugar: centros</p>
+
+                <div class="d-flex justify-content-center">
+                    <a href="" class="btn btn-dark">Entrenar</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

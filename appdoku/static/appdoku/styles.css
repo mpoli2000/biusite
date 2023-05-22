@@ -1,0 +1,57 @@
+header{
+    background-color: rgba(52, 59, 64, 0.9);
+}
+
+.grilla{
+    display: grid;
+    /* padding: 5px; */
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(3,1fr);
+    /* border: black solid 5px; */
+}
+
+.celda{
+    border: rgba(52, 59, 64, 0.8) solid 0.75px;
+    height: 100%;
+    width: 100%;
+    font-size: 1rem;
+    text-align: center;
+    padding: 5px;
+}
+
+.celda-none{
+    background-color: white;
+    color: black;
+}
+
+.celda-primary{
+    background-color: rgba(52, 59, 64, 0.9);
+    color: white;
+    font-weight: bold;
+}
+
+.celda-danger{
+    background-color: white;
+    color: red;
+}
+
+.celda-success{
+    background-color: rgb(108, 216, 108);
+    color: white;
+    font-weight: bold;
+}
+
+
+.celda-none:hover{
+    background-color: lightblue;
+}
+
+.celda-danger:hover{
+    background-color: lightblue;
+}
+
+input:focus{
+    background-color: lightblue;
+    outline:invert blue;
+    /* font-size: 0.5rem; */
+}
