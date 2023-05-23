@@ -66,7 +66,6 @@ python manage.py makemigrations <app_name>
 python manage.py sqlmigrate polls 0001
 python manage.py migrate
 
-
 python manage.py createsuperuser
 http://127.0.0.1:8000/admin/
 
@@ -78,3 +77,28 @@ admin.site.register(Question)
 
 python manage.py runserver
 python manage.py shell
+
+
+
+
+# .gitignore --------------------------
+
+# Exclude pycache directories
+__pycache__/
+
+# Exclude user-specific settings
+**/settings_local.py
+**/local_settings.py
+
+# Exclude IDE-specific files
+.idea/
+.vscode/
+
+# Exclude temporary or cache files
+*.log
+*.session
+*.pyc
+*.pyo
+db.sqlite3
+/static/
+/media/
